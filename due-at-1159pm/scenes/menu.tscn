@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhjgckoiukklr"]
+
+[ext_resource type="Texture2D" uid="uid://brfrapsiu3kqe" path="res://assets/blocks/cloud2.png" id="1_1bhbd"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_3exrk"]
+[ext_resource type="FontFile" uid="uid://cmogaggrcexvv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_gophs"]
+[ext_resource type="Texture2D" uid="uid://bfsocqlj3vcdo" path="res://assets/ui/button_normal.png" id="3_qi0sq"]
+[ext_resource type="Texture2D" uid="uid://do14md0bxe4to" path="res://assets/ui/button.png" id="3_y863f"]
+[ext_resource type="FontFile" uid="uid://bn00efc70uvr1" path="res://assets/fonts/PixelOperator8.ttf" id="4_c8npm"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_3exrk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -128.0
+offset_top = -60.0
+offset_right = 1273.0
+offset_bottom = 728.0
+texture = ExtResource("1_1bhbd")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -164.0
+offset_right = 276.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_gophs")
+theme_override_font_sizes/font_size = 32
+text = "congratulations on
+turning in your
+assignment in at 
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -11.5
+offset_right = 37.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.634216, 1.15514e-06, 1)
+theme_override_fonts/font = ExtResource("2_gophs")
+theme_override_font_sizes/font_size = 32
+text = "11:20 pm!"
+
+[node name="RestartButton" type="TextureButton" parent="."]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.5
+offset_top = -223.0
+offset_right = 135.5
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_qi0sq")
+texture_pressed = ExtResource("3_y863f")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="RestartButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -18.0
+offset_right = 94.5
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_c8npm")
+theme_override_font_sizes/font_size = 24
+text = "play again"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

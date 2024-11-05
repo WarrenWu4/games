@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdmsncawu5oj8"]
+
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_oa2iw"]
+[ext_resource type="Texture2D" uid="uid://vfjujm5ut3n3" path="res://assets/items/melatonin_pill.png" id="2_t163r"]
+[ext_resource type="FontFile" uid="uid://bn00efc70uvr1" path="res://assets/fonts/PixelOperator8.ttf" id="3_40qrp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wr12u"]
+radius = 7.0
+height = 14.0
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_oa2iw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-5.96046e-08, -5.96046e-08)
+scale = Vector2(0.78125, 0.78125)
+texture = ExtResource("2_t163r")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wr12u")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -49.0
+offset_top = -21.0
+offset_right = 49.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("3_40qrp")
+theme_override_font_sizes/font_size = 8
+text = "melatonin pill"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

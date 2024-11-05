@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://5qwssissjjm8"]
+
+[ext_resource type="PackedScene" uid="uid://w6xbkrbbip81" path="res://scenes/player.tscn" id="1_50msj"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_knarp"]
+[ext_resource type="Texture2D" uid="uid://choyot7nu8qq2" path="res://assets/blocks/cloud3.png" id="2_10c1p"]
+[ext_resource type="PackedScene" uid="uid://dk4kd36e0bhgl" path="res://scenes/world_map.tscn" id="2_mopol"]
+[ext_resource type="PackedScene" uid="uid://dargoww1nmxd" path="res://scenes/complete_homework.tscn" id="3_w2311"]
+[ext_resource type="FontFile" uid="uid://bn00efc70uvr1" path="res://assets/fonts/PixelOperator8.ttf" id="4_5bw3x"]
+[ext_resource type="PackedScene" uid="uid://bdmsncawu5oj8" path="res://scenes/item.tscn" id="4_55k4p"]
+[ext_resource type="PackedScene" uid="uid://3qu4h4vt5ohu" path="res://scenes/hud.tscn" id="6_ow441"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_knarp")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -380.0
+offset_top = -296.0
+offset_right = 640.0
+offset_bottom = 278.0
+texture = ExtResource("2_10c1p")
+
+[node name="WorldMap" parent="." instance=ExtResource("2_mopol")]
+
+[node name="CompleteHomework" parent="." instance=ExtResource("3_w2311")]
+position = Vector2(280, -150)
+
+[node name="Instructions" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="Instructions"]
+texture_filter = 1
+offset_left = -214.0
+offset_top = -52.0
+offset_right = -129.0
+offset_bottom = -29.0
+theme_override_fonts/font = ExtResource("4_5bw3x")
+theme_override_font_sizes/font_size = 8
+text = "left and right
+to move"
+
+[node name="Label2" type="Label" parent="Instructions"]
+texture_filter = 1
+offset_left = -215.0
+offset_top = 28.0
+offset_right = -130.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("4_5bw3x")
+theme_override_font_sizes/font_size = 8
+text = "space or up
+to jump"
+
+[node name="Label3" type="Label" parent="Instructions"]
+texture_filter = 1
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 14.0
+offset_bottom = -45.0
+theme_override_fonts/font = ExtResource("4_5bw3x")
+theme_override_font_sizes/font_size = 8
+text = "turn in your paper 
+before the clock 
+hits 11:59 pm!"
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Item" parent="Items" instance=ExtResource("4_55k4p")]
+position = Vector2(78, -17)
+
+[node name="Player" parent="." instance=ExtResource("1_50msj")]
+position = Vector2(362, -133)
+
+[node name="HUD" parent="." instance=ExtResource("6_ow441")]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="is_game_over" from="CompleteHomework" to="." method="_on_complete_homework_is_game_over"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

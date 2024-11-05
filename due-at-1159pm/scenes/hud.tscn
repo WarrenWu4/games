@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://3qu4h4vt5ohu"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_dyf7h"]
+[ext_resource type="FontFile" uid="uid://bn00efc70uvr1" path="res://assets/fonts/PixelOperator8.ttf" id="1_sfxxs"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_dyf7h")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 965.0
+offset_top = 25.0
+offset_right = 1124.0
+offset_bottom = 49.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_sfxxs")
+theme_override_font_sizes/font_size = 24
+text = "10:00 pm"

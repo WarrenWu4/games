@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dargoww1nmxd"]
+
+[ext_resource type="Script" path="res://scripts/complete_homework.gd" id="1_o15wn"]
+[ext_resource type="Texture2D" uid="uid://7hheljopmiu3" path="res://assets/items/completed_homework.png" id="2_hstt0"]
+[ext_resource type="FontFile" uid="uid://bn00efc70uvr1" path="res://assets/fonts/PixelOperator8.ttf" id="3_24xch"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b7iad"]
+radius = 8.0
+height = 16.0
+
+[node name="CompleteHomework" type="Area2D"]
+script = ExtResource("1_o15wn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_hstt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_b7iad")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -26.0
+offset_top = -24.0
+offset_right = 27.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("3_24xch")
+theme_override_font_sizes/font_size = 8
+text = "turn in"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
